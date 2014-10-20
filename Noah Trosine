@@ -1,0 +1,38 @@
+int num = 35;
+// int num=20 Changes the size of the circle 
+float mx[] = new float[num];
+//mx is the varible 
+float my[] = new float[num];
+//my is the varible 
+
+void setup() {
+  //All these things will stay the same
+  size(840, 630);
+  // Changes the size of the picture
+  noStroke();
+  fill(253, 153); 
+  // Changes the opacity of the circle
+}
+
+void draw() {
+// begin draw
+  background(557); 
+  // Changes the backround color
+  
+  // Cycle through the array, using a different entry on each frame. 
+  // Using modulo (%) like this is faster than moving all the values over.
+  int which = frameCount % num;
+  //If the framecount is divided by a number, show ellipse 
+  mx[which] = mouseX;
+ // Makes the circle go left and right
+  my[which] = mouseY;
+  // Makes the circle go up and down
+  
+  for (int i = 0; i < num; i++) {
+    // which+1 is the smallest (the oldest in the array)
+    int index = (which+1 + i) % num;
+    //varible index is defined as the array which adding one plus i divided by the remandor of num
+    ellipse(mx[index], my[index], i, i);
+    // ellipse is the word the will change the shape to a circle
+  }
+}
